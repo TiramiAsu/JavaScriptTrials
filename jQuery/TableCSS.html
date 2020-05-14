@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tab CSS</title>
+</head>
+<body>
+  <input type="button" name="clean" value="Reset" id="btn0" />
+  <br><br>
+  <input type="button" name="nameFilter" value="button1" id="btn" />
+  <span>(index: 2-5)</span>
+  <div>0</div>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <input type="button" name="name" value="button2" id="btn2" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script>
+    $(function () {
+      // button 1 : filter index 2-5 change background color
+      $('#btn').click(function () {
+        $('div:lt(' + (5+1) + '):gt(' + (2-1) + ')').css('background-color', '#FFF3DE')
+      })
+
+      // button 2 : first, last, even, odd
+      $('#btn2').click(function () {
+        // choose first
+        $('div:first').text('Hello')
+        // $('div').first().text('Hello')
+
+        // choose last
+        $('div').last().text('Hello-last')
+
+        // choose even
+        $('div:even').css('background-color', '#FFE8E8')
+
+        // choose odd
+        $('div:odd').css('backgroundColor', 'lightpink')
+      })
+
+      // Reset background-color
+      $('#btn0').click(function () {
+        $('div').css('background-color', '')
+      })
+    })
+  </script>
+</body>
+</html>
