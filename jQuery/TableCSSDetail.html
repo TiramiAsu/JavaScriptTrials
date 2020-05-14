@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Table CSS Detail</title>
+</head>
+<body>
+  <input type="button" name="name" value="設定表格樣式" id="btn" />
+  <table id="table1" border="1">
+    <tr>
+      <td>Name</td>
+      <td>Score</td>
+    </tr>
+    <tr>
+      <td>Tom</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Jim</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Jason</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Helen</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <td>Average</td>
+      <td>90</td>
+    </tr>
+  </table>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script>
+    $(function () {
+      $('#btn').click(function () {
+        //設定表格的第一行為表頭，即顯示字型變為 30px
+        $('#table1 tr:first').css('font-size', '30px')
+        $('#table1 tr:first').css('background-color','#97CBFF')
+
+        // 設定奇數 row 底色
+        $('#table1 tr:odd').css('background-color','#D2E9FF')
+
+        // 設定前 3 名
+        $('#table1 tr:gt(0):lt(3)').css({
+          'font-size': '20px',
+          color: '#EA0000'
+        })
+
+        // 設定 Average
+        $('#table1 tr:last').css('color', '#FF00FF')
+      })
+    })
+  </script>
+</body>
+</html>
