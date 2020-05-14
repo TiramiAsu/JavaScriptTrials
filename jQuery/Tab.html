@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tab</title>
+  <style>
+    .menu{
+      margin: 0 auto;
+      height: 35px;
+      line-height: 35px;
+      width: 400px;
+      background-color:#999999;
+    }
+    .menu .tab{
+      float: left;
+      width: 65px;
+      border-right: 1px solid #fdfdfd;
+      text-align: center;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    .content{
+      margin: 0 auto;
+      height: 200px;
+      width: 398px;
+      border: 1px dashed #999999;
+      border-top: 0px;
+    }
+    .hide{
+      display: none;
+    }
+    .active{
+      background-color: #ff6600;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <div class="tab active">Tab 1</div>
+    <div class="tab">Tab 2</div>
+    <div class="tab">Tab 3</div>
+  </div>
+  <div class="content">
+    <div>內容一</div>
+    <div class="hide">內容二</div>
+    <div class="hide">內容三</div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script>
+    $('.tab').click(function () {
+      // 被點擊 tab 的樣式添加 active，其他 tab 則去掉 active 樣式
+      $(this).addClass('active').siblings().removeClass('active')
+      // 獲取被點擊 div 的 index
+      var index = $(this).index('.tab')
+      // 根據 index 找到 content 內容, 子組建中的對應 tab 並移除 hide 樣式(顯示), 其他 tab 添加 hide 樣式(隱藏)
+      $('.content').children().eq(index).removeClass('hide').siblings().addClass('hide')
+    })
+  </script>
+</body>
+</html>
