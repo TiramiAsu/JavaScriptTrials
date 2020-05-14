@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Form Enable</title>
+</head>
+<body>
+  <form action="/" id="form1" method="post">
+    <input type="text" disabled="disabled" name="name" vlalue=" "><br>
+    <input type="button" name="name" value="button"><br>
+    <input type="text" enabled="enabled" name="name" value=" ">
+  </form>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script>
+    $(function () {
+      // 無空格 -> 是選擇器
+      // $('#form1:enabled').css('border', '1px solid red')
+
+      // 有空格 -> 找 form 下面沒有被禁用的 DOM
+      $('#form1 :enabled').css('border', '1px solid red')
+    })
+  </script>
+</body>
+</html>
