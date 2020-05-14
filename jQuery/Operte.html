@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Operate</title>
+  <style>
+    .hide{
+      display: none;
+    }
+    .model{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 500px;
+      height: 350px;
+      margin-top: -200px;
+      margin-left: -250px;
+      background-color: aliceblue;
+      z-index: 10;
+    }
+    .model p,h2{
+      text-align: center;
+    }
+    .model p input[type="text"]{
+      width: 300px;
+      height: 28px;
+    }
+    .model p input[type="button"]{
+      width: 150px;
+      height: 35px;
+    }
+    .shadow{
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: black;
+      opacity: 0.6;
+      z-index: 9;
+    }
+</style>
+</head>
+<body>
+  <a onclick="addModel()">ADD</a>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Address</th>
+        <th>Port</th>
+        <th>Operate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td name="host">1.1.1.11</td>
+        <td name="port">80</td>
+        <td>
+          <a class="edit">EDIT</a>
+          <span> | </span>
+          <a >DELETE</a>
+        </td>
+      </tr>
+      <tr>
+        <td name="host">1.1.1.12</td>
+        <td name="port">80</td>
+        <td>
+          <a class="edit">EDIT</a>
+          <span> | </span>
+          <a >DELETE</a>
+        </td>
+      </tr>
+      <tr>
+        <td name="host">1.1.1.13</td>
+        <td name="port">80</td>
+        <td>
+          <a class="edit">EDIT</a>
+          <span> | </span>
+          <a >DELETE</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model hide">
+    <p>
+      <h2>Operate</h2>
+    </p>
+    <p>Address: <input type="text" name="host" /></p>
+    <p>   Port: <input type="text" name="port" /></p>
+    <p><input type="button" value="取消" onclick="removeModel()" /></p>
+  </div>
+  <div class="shadow hide"></div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script>
+    // 打開對話框
+    function addModel() {
+      $('.model, .shadow').removeClass('hide')
+      $('.model p input[type="text"').val('')
+    }
+    // 關閉對話框
+    function removeModel() {
+      $('.model, .shadow').addClass('hide')
+    }
+    // 點擊編輯
+    $('.edit').click(function () {
+      $('.model, .shadow').removeClass('hide')
+      // 取得當前點擊的 DOM 父標籤下的所有子標籤
+      var tds = $(this).parent().prevAll()
+      tds.each(function () {
+        // $('.model input[name="?"]') -> 取得 name 輸入框的值
+        // $(this).attr('name') -> 取得被點擊的 td 標籤的 name 值並代入
+        // val() -> 賦值
+        $('.model input[name=' + $(this).attr('name') + ']').val($(this).text())
+      })
+    })
+  </script>
+</body>
+</html>
