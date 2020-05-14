@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Table CSS Test</title>
+</head>
+<body>
+  <table id="t1" border="1">
+    <tr>
+      <td>A</td>
+      <td>A</td>
+      <td>A</td>
+      <td>A</td>
+      <td>A</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>B</td>
+      <td>B</td>
+      <td>B</td>
+      <td>B</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>D</td>
+      <td>D</td>
+      <td>D</td>
+      <td>D</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>E</td>
+      <td>E</td>
+      <td>E</td>
+      <td>E</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+  </table>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script>
+    // 記得把註冊的點選事件寫在 ready 裡面，否則的話不報錯
+    $(function () {
+      $('#t1 tr').click(function () {
+        /* 限定範圍, 在當前點的那行裡面找 ID, 寫完後清除其他行 */
+        $('#t1 tr td').css('background-color', '')
+
+        /* this 指的是選取的這個 tr */
+        // $('td:odd', $(this)).css('background-color', '#77DDFF')
+        // $('td:even', this).css('background-color', '#FFDDAA')
+
+        // alert($('#t1 tr').index(this))
+        var i = $('#t1 tr').index(this) // i = "tr 的 index"
+        if (i % 2 === 0 ) {
+          $('td', $(this)).css('background-color', '#77DDFF')
+        } else {
+          $('td', this).css('background-color', '#FFDDAA')
+        }
+      })
+    })
+  </script>
+</body>
+</html>
