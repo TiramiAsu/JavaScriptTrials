@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Attribute Selector</title>
+</head>
+<body>
+  <div id="dv2">
+      <input id="dd1" type="button" name="aa" value="dd1:aa" />
+      <input id="dd2" type="button" name="bb" value="dd2:bb" />
+      <input type="button" name="bbc" value="(x):bbc" />
+      <input id="dd3" type="button" value="dd3:(no name)" />
+      <input type="button" name="aa" value="(x)aa" />
+      <input type="button" name="cbbc" value="(x)cbbc" />
+      <input id="dd4" type="button" name="cbb" value="dd4:cbb" />
+      <input id="dd5" type="button" name="aa" value="dd5:aa" />
+      <br><br>
+      <input id="txt" type="text" value="(txt)">
+      <br><br>
+      <input id="d1" type="button" value="有 name 屬性" />
+      <input id="d6" type="button" value="有 name 屬性又有 id 屬性" />
+      <br><br>
+      <input id="d2" type="button" value="有 name 屬性為 bb" />
+      <input id="d3" type="button" value="有 name 屬性為 bb 開頭" />
+      <input id="d4" type="button" value="有 name 屬性為 bb 結尾" />
+      <input id="d5" type="button" value="有 name 屬性包含 bb" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script>
+    function msg(txt) {
+      $('#txt').val(txt)
+    }
+    function clear() {
+      $('input').css('border', '')
+    }
+    $(function () {
+
+      /* 選擇有 name 屬性的 input */
+      $('#d1').click(function () {
+        clear()
+        $('#dv2 input[name]').css('border', '1px solid red')
+        msg('have name')
+      })
+
+      /* 選擇有 name 屬性又有 id 的 input */
+      $('#d6').click(function () {
+        clear()
+        $('#dv2 input[name][id]').css('border', '1px solid blue')
+        msg('have name & id')
+      })
+
+      /* 選擇有 name 屬性為 bb 的 input */
+      $('#d2').click(function () {
+        clear()
+        $('#dv2 input[name = bb]').css('border', '1px solid red')
+        msg('name = bb')
+      })
+
+      /* 選擇有 name 屬性為 bb 開頭的 input */
+      $('#d3').click(function () {
+        clear()
+        $('#dv2 input[name ^= bb]').css('border', '1px solid cyan')
+        msg('name ^= bb')
+      })
+
+      /* 選擇有 name 屬性為 bb 結尾的 input */
+      $('#d4').click(function () {
+        clear()
+        $('#dv2 input[name $= bb]').css('border', '1px solid blue')
+        msg('name $= bb')
+      })
+
+      /* 選擇有 name 屬性包含 bb 的 input */
+      $('#d5').click(function () {
+        clear()
+        $('#dv2 input[name *= bb]').css('border', '1px solid pink')
+        msg('name *= bb')
+      })
+    })
+  </script>
+</body>
+</html>
